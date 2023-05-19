@@ -16,12 +16,13 @@ class Cookware():
 #Print out a list for what the current player has equipped (may change later based on how shop is designed)
 
 def check_equipment():
-    from __main__ import Player1
+    from main import Player1
     print("Weapon: ",str(Player1.equipment["Weapon"]))
     print("Shield: ",str(Player1.equipment["Shield"]))
     print("Armor: ",str(Player1.equipment["Armor"]))
     print("Leggings: ",str(Player1.equipment["Leggings"]))
     print("Helmet: ",str(Player1.equipment["Helmet"]))
     print("Boots: ",str(Player1.equipment["Boots"]))
+
 
 
