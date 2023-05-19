@@ -4,7 +4,6 @@ import random
 #Importing code from other py files in the same directory.
 import questions as input_h
 import fighters as f
-import weapons as wep
 import shop_events as s
 import creator as cr
 
@@ -91,9 +90,11 @@ def choose(option):
 #Starts the game, currently has the same fuctionality as the shop() but will change later.
 
 def game_start():
+    s.data_load(Player1.equipment)
     s.shop()
 
 menu()
+
 
 
 
