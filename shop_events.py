@@ -1,6 +1,11 @@
 #Enters the shop where you can use your gold to buy things before a round starts.
 import questions as input_h
 import weapons as wep
+data = {}
+
+def data_load(equipment):
+    global data
+    data=equipment
 def shop():
     print ("-------------------------------------------")
     print ("You have  now entered the blacksmith's store.")
@@ -14,7 +19,7 @@ def shop():
         if x == 2:
             print ("This is what your character currently has equipped.")
             print("------------------------------------------------------")
-            wep.check_equipment()
+            wep.check_equipment(data["Weapon"],data["Shield"],data["Armor"],data["Leggings"],data["Helmet"],data["Boots"])
             print("------------------------------------------------------")
             input("press any key to go back to the previous menu.")
         else:
