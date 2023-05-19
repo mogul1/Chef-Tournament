@@ -1,5 +1,4 @@
 
-
 #This class represents the "Weapons" that the "Players" will be using.
 #QTY = Quality (How good the weapon is), SKILL = Skill (Any extra abilities will be defined here), WGT = Weight (How heavy/light the weapon is),FIN = Finesse (How much the weapon scales with AGI/DEX vs STR, higher the number the more it scales with AGI/DEX)
 #IMP = Impact (higher the number the more it scales with STR), ID = id (Position of Weapon in Weapon pool).
@@ -15,14 +14,13 @@ class Cookware():
 
 #Print out a list for what the current player has equipped (may change later based on how shop is designed)
 
-def check_equipment():
-    from main import Player1
-    print("Weapon: ",str(Player1.equipment["Weapon"]))
-    print("Shield: ",str(Player1.equipment["Shield"]))
-    print("Armor: ",str(Player1.equipment["Armor"]))
-    print("Leggings: ",str(Player1.equipment["Leggings"]))
-    print("Helmet: ",str(Player1.equipment["Helmet"]))
-    print("Boots: ",str(Player1.equipment["Boots"]))
+def check_equipment(Weapon,Shield,Armor,Leggings,Helmet,Boots):
+    print("Weapon: ",str(Weapon))
+    print("Shield: ",str(Shield))
+    print("Armor: ",str(Armor))
+    print("Leggings: ",str(Leggings))
+    print("Helmet: ",str(Helmet))
+    print("Boots: ",str(Boots))
 
 
 
