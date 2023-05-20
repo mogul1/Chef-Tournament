@@ -1,4 +1,5 @@
 
+
 #This class represents the "Weapons" that the "Players" will be using.
 #QTY = Quality (How good the weapon is), SKILL = Skill (Any extra abilities will be defined here), WGT = Weight (How heavy/light the weapon is),FIN = Finesse (How much the weapon scales with AGI/DEX vs STR, higher the number the more it scales with AGI/DEX)
 #IMP = Impact (higher the number the more it scales with STR), ID = id (Position of Weapon in Weapon pool).
@@ -21,6 +22,5 @@ def check_equipment(Weapon,Shield,Armor,Leggings,Helmet,Boots):
     print("Leggings: ",str(Leggings))
     print("Helmet: ",str(Helmet))
     print("Boots: ",str(Boots))
-
 
 

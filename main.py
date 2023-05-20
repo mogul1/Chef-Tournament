@@ -3,8 +3,8 @@ import random
 
 #Importing code from other py files in the same directory.
 import questions as input_h
-import fighters as f
-import shop_events as s
+import fighters as fi
+import shop_events as sh
 import creator as cr
 
 #This is the "Pool" of "Players" that will be pulled from when the game is first generated, you can add characters to it.
@@ -48,8 +48,8 @@ def choose(option):
         print(characters,"LENGTH: ",(len(characters)))
         global Player1
         global Player2
-        Player1=f.Chef(characters[rng1] [0],characters[rng1][1],characters[rng1][2],characters[rng1][3],characters[rng1][4],characters[rng1][5],characters[rng1][6],characters[rng1][7],characters[rng1][8])
-        Player2=f.Chef(characters[rng2] [0],characters[rng2][1],characters[rng2][2],characters[rng2][3],characters[rng2][4],characters[rng2][5],characters[rng2][6],characters[rng2][7],characters[rng2][8])
+        Player1=fi.Chef(characters[rng1] [0],characters[rng1][1],characters[rng1][2],characters[rng1][3],characters[rng1][4],characters[rng1][5],characters[rng1][6],characters[rng1][7],characters[rng1][8])
+        Player2=fi.Chef(characters[rng2] [0],characters[rng2][1],characters[rng2][2],characters[rng2][3],characters[rng2][4],characters[rng2][5],characters[rng2][6],characters[rng2][7],characters[rng2][8])
         Chef1_Properties= [Player1.VIT, Player1.AGI,Player1.STR, Player1.DEX, Player1.ATR, Player1.WIN]
         Chef2_Properties = [Player2.VIT, Player2.AGI,Player2.STR, Player2.DEX, Player2.ATR, Player2.WIN]
         if Player_Total < 2:
@@ -90,11 +90,11 @@ def choose(option):
 #Starts the game, currently has the same fuctionality as the shop() but will change later.
 
 def game_start():
-    s.data_load(Player1.equipment)
-    s.shop()
+    sh.data_load(Player1.equipment)
+    choice = sh.enter_shop()
+    if choice == True:
+        Player1.add_gold(500)
+        sh.browse_shop(Player1.money)
 
 menu()
-
-
-
 

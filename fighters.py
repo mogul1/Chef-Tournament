@@ -20,11 +20,15 @@ class Chef():
     def init_inv(self):
         self.money = 0
         self.equipment = {"Weapon": "Unarmed", "Shield": "None","Armor": "Plain Clothes","Leggings":"Pants","Helmet": "Hat", "Boots":"Leather Sandles" }
-
 #Adds money to the Chef instance's inventory based on value given for Gold.
 
     def add_gold(self, gold):
-        self.money = self.money + self.gold
+        print("CURRENT BALANCE: ",self.money)
+        self.money = self.money + gold
+        print("--------------------------")
+        print("NEW BALANCE: ",self.money,"GOLD ADDED: ",gold)
+        print("--------------------------")
+
 #Takes money from the Chef instance's inventory and equips an item that shares the same name to the given equipment type.
 
     def buy_cookware(self,cost,cookware,equip_type):
