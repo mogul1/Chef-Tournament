@@ -6,11 +6,14 @@ import questions as input_h
 import fighters as fi
 import shop_events as sh
 import creator as cr
+import weapons as wep
 
 #This is the "Pool" of "Players" that will be pulled from when the game is first generated, you can add characters to it.
 characters = [[5,2,3,15,"Tester1","Earth",20,4,0],[10,7,26,30,"Tester2","Discord",73,22,0]]
-
-check = 0
+#Pool of weapons
+weapons =[{"Name": "Golden Pan","QTY": 100,"SKILL":["Mana",40,"Fire",150],"WGT":15,"FIN":10,"IMP":75,"ID":["Weapon",0,500]},{"Name": "Chef Hat","QTY": 20,"SKILL":[],"WGT":2,"FIN":70,"IMP":15,"ID":["Helmet",1,250]}]
+skills = []
+round_count = 0
 #This method handles the "Main Menu" where the user can choose to play a game, create a character or change any misc. settings.
 
 def menu():
@@ -87,14 +90,41 @@ def choose(option):
     if choice == 2:
         characters.append(cr.create_character())
 
-#Starts the game, currently has the same fuctionality as the shop() but will change later.
+#Loads equipment for player and interacts with the shop_events.py
+#This is where the pre fighting game stuff should happen.
 
 def game_start():
+    global round_count
     sh.data_load(Player1.equipment)
     choice = sh.enter_shop()
-    if choice == True:
+    if choice == "Cancel":
+        menu()
+    if round_count == 0:
+        print("FIRST ROUND BONUS")
+        print("-----------------")
         Player1.add_gold(500)
-        sh.browse_shop(Player1.money)
-
+        round_count=round_count+1
+    while True:
+        new_bal = sh.browse_shop(Player1.money,weapons)
+        if new_bal == "Continue":
+            continue
+        if new_bal == "Play":
+            battle_start()
+            break
+        if new_bal == "Cancel":
+            game_start()
+        if type(new_bal) == list:
+            if new_bal[0] == "GOLD":
+                Player1.money = Player1.money - new_bal[1]
+                Player1.add_gold (2000)
+                continue
+        else:
+            Player1.money = new_bal
+            battle_start()
+            break
+#This is where all the fighting should happen
+def battle_start():
+    print("WHERE THE GAME TAKES PLACE")
+    print(Player1.equipment["Weapon"],Player1.equipment["Shield"],Player1.equipment["Armor"],Player1.equipment["Leggings"],Player1.equipment["Helmet"],Player1.equipment["Boots"])
+    input("TEST")
 menu()
-
