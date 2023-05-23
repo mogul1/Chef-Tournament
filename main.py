@@ -115,7 +115,8 @@ def game_start():
             game_start()
         if type(new_bal) == list:
             if new_bal[0] == "GOLD":
-                Player1.money = Player1.money - new_bal[1]
+                print(Player1.money,new_bal[1])
+                Player1.money = new_bal[1]
                 Player1.add_gold (2000)
                 continue
         else:
