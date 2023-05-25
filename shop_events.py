@@ -1,12 +1,11 @@
 #Enters the shop where you can use your gold to buy things before a round starts.
 import questions as input_h
 import weapons as wep
-data = {}
 
 # Loads the "equipment" dictionary from a Player entity
-def data_load(equipment):
+def data_load(player):
     global data
-    data=equipment
+    data=player
 
 # The first menu of the shop
 def enter_shop():
@@ -21,18 +20,19 @@ def enter_shop():
         if x == 2:
             print ("This is what your character currently has equipped.")
             print("------------------------------------------------------")
-            wep.check_equipment(data["Weapon"],data["Shield"],data["Armor"],data["Leggings"],data["Helmet"],data["Boots"])
+            wep.print_equipment(data.equipment["Weapon"],data.equipment["Shield"],data.equipment["Armor"],data.equipment["Leggings"],data.equipment["Helmet"],data.equipment["Boots"])
             print("------------------------------------------------------")
             input("press any key to go back to the previous menu.")
+            continue
         if x == 3:
             return "Cancel"
         else:
             print ("Not a valid choice.")
 
 # The second menu of the shop, money == current money of the relevant player entity, shop_inv == Pool of weapons
-def browse_shop(money,shop_inv):
+def browse_shop(shop_inv):
     while True:
-            print("You have",money," Gold.")
+            print("You have",data.money," Gold.")
             shop_size = len(shop_inv)
             x = 0
             print("------------------------")
@@ -53,26 +53,25 @@ def browse_shop(money,shop_inv):
             elif choice > shop_size or choice < 0:
                 continue
             elif choice > -1 or choice < shop_size:
-                if money - shop_inv[choice]["ID"][2] < 0:
+                if data.money - shop_inv[choice]["ID"][2] < 0:
                     print ("Not enough gold.")
-                    end_check = end_shop(money)
+                    end_check = end_shop(data.money)
                     if end_check == "Continue":
                         continue
                     else:
                         return end_check
-                elif shop_inv[choice]["Name"] == data [shop_inv[choice]["ID"][0]]:
-                    print ("DUPLICATE: ",data [shop_inv[choice]["ID"][0]],"IS THE SAME AS",shop_inv[choice]["Name"])
-                    end_check = end_shop(money)
+                elif shop_inv[choice]["Name"] == data.equipment [shop_inv[choice]["ID"][0]]:
+                    print ("DUPLICATE: ",data.equipment [shop_inv[choice]["ID"][0]],"IS THE SAME AS",shop_inv[choice]["Name"])
+                    end_check = end_shop(data.money)
                     if end_check == "Continue":
                         continue
                     else:
                         return end_check
                 else:
-                    data [shop_inv[choice]["ID"][0]] = shop_inv[choice]["Name"]
-                    money = money - shop_inv[choice]["ID"][2]
-                    print("Balance is now: ",money)
+                    data.buy_cookware(shop_inv[choice]["ID"][2],shop_inv[choice]["Name"],shop_inv[choice]["ID"][0])
+                    print("Balance is now: ",data.money)
                     print(shop_inv[choice]["ID"][0],"is now ",shop_inv[choice]["Name"])
-                    end_check = end_shop(money)
+                    end_check = end_shop(data.money)
                     if end_check == "Continue":
                         continue
                     else:

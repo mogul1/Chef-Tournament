@@ -32,14 +32,14 @@ class Chef():
 #Takes money from the Chef instance's inventory and equips an item that shares the same name to the given equipment type.
 
     def buy_cookware(self,cost,cookware,equip_type):
-        self.money = self.money - self.cost
-        equip_item(self.cookware,self.equip_type)
+        self.money = self.money - cost
+        self.equip_item(cookware,equip_type)
 
 #Checks the inventory (which is a dictionary) and updates the value of the given weapon type.
 
     def equip_item(self,cookware,equip_type):
-        equipment.update(
+        self.equipment.update(
             [
-                (self.equip_type, self.cookware)
+                (equip_type, cookware)
             ]
         )
