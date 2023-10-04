@@ -95,10 +95,10 @@ def choose(option):
 def game_start(check):
     sh.data_load(Player1)
     choice = sh.enter_shop()
-    if check == True:
-        Player1.add_gold(500)
     if choice == "Cancel":
         menu()
+    elif check == True:
+        Player1.add_gold(500)
     while True:
         new_bal = sh.browse_shop(weapons)
         if new_bal == "Continue":
@@ -118,7 +118,6 @@ def game_start(check):
             Player1.money = new_bal
             print("BREAK", Player1.equipment)
             weapon_objects = wep.look_up_equipment(Player1.equipment,weapons)
-            print(weapon_objects["Chef Hat"].QTY)
             input("ETST")
             combat.battle_start(Player1,weapon_objects)
             break

@@ -30,12 +30,16 @@ def look_up_equipment(equipment,weapon_name):
     print(weapon_name[x]["Name"],equipment,length)
     list_to_return =[]
     while x < length:
-        if (weapon_name[x]["Name"] in equipment[weapon_name [x]["ID"][0]]) is False:
-            print(weapon_name[x], equipment[weapon_name [x]["ID"][0]])
-            print("NOT EQUIPPED",weapon_name[x]["Name"])
-            x = x + 1
-        if (weapon_name[x]["Name"] in equipment[weapon_name [x]["ID"][0]])is True:
-            print("TEST",weapon_name[x]["Name"],equipment[weapon_name [x]["ID"][0]])
+        wep_chosen = weapon_name[x]["Name"]
+        equip_checked = equipment[weapon_name [x]["ID"][0]]
+        if ( wep_chosen in equip_checked) is False:
+            print(weapon_name[x],equip_checked)
+            print("NOT EQUIPPED",wep_chosen)
+            print(x,wep_chosen,equip_checked)
+            x = x+1
+        if (wep_chosen in equip_checked)is True:
+            print(weapon_name[x], equip_checked)
+            print("IS EQUIPPED",wep_chosen,equip_checked)
             list_to_return.append(weapon_name[x])
             x = x+1
     print("END RESULT",list_to_return)
